@@ -1,4 +1,10 @@
 export const Repdata = [
+    //{
+    //    investigation:"Investigation",
+    //    result:"Result",
+    //    value:"Value",
+    //    unit:"Unit",
+    //},
     {
         investigation:"Primary Sample Type:",
         result:"Blood",
@@ -14,7 +20,7 @@ export const Repdata = [
     {
         investigation:"Hemoglobin (Hb)",
         result:"12.5",
-        value:"12-13",
+        value:"13-17",
         unit:"g/dl",
     },
     {
@@ -37,24 +43,27 @@ export const Repdata = [
     },
     {
         investigation:"Packed Cell Volume (PCV)",
-        result:"47.5",
+        result:"57.5",
         value:"40-50",
         unit:"%",
     },
     {
         investigation:"Mean Corpuscular Volume (MCV)",
+        measure:"Calculated",
         result:"87.75",
         value:"83-101",
         unit:"fL",
     },
     {
         investigation:"MCH",
+        measure:"Calculated",
         result:"27.2",
         value:"27-32",
         unit:"pg",
     },
     {
         investigation:"MCHC",
+        measure:"Calculated",
         result:"32.8",
         value:"32.5-34.5",
         unit:"g/dL",

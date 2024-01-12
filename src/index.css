@@ -1,0 +1,30 @@
+.result.high {
+  color: red;
+}
+
+.result.low {
+  color: blue;
+}
+
+.value.high {
+  color: red;
+}
+
+.value.low {
+  color: blue;
+}
+
+.line{
+  width: 238%;
+}
+
+
+/*.first-page {
+  page-break-before: always;
+}*/
+
+
+
+
+
+
