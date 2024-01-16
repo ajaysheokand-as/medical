@@ -271,7 +271,7 @@ const Test = () => {
                 </div>
             </div>
             {resultTestData && <MyAccordion resultData={resultTestData} />}
-        </div>
+        </div> 
     );
 };
 
