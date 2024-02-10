@@ -1,36 +1,74 @@
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const initialState = {
+//     patientData :
+//         {
+//         firstName: '',
+//         lastName: '',
+//         dateOfBirth: '',
+//         age: '',
+//         gender: 'NA',
+//         email: '',
+//         phoneNumber: '',
+//         zipCode: '',
+//         medicalHistory: '',
+//         referringDoctor: '',
+//         collection: '',
+//     },
+//     reportData: []
+// }
+
+// export const formSlice = createSlice({
+//     name: "formData",
+//     initialState,
+//     reducers: {
+//         setPatientData: (state, action) => {
+//             state.patientData[action.payload.name] = action.payload.value
+//         },
+//         addReportData: (state, action) => {
+//             // state.reportData.push(action.payload);
+//             // const data = action.payload.filter((data) => data);
+//             state.reportData = action.payload.filter((data) => data);;
+//         }
+//     }
+// });
+
+// export const { setPatientData, addReportData } = formSlice.actions;
+// export default formSlice.reducer;
+
+// formDataSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    patientData : 
-        {
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        age: '',
-        gender: 'NA',
-        email: '',
-        phoneNumber: '',
-        zipCode: '',
-        medicalHistory: '',
-        referringDoctor: '',
-        collection: '',
-    },
-    reportData: []
-}
+  patientData: {
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    age: "",
+    gender: "NA",
+    email: "",
+    phoneNumber: "",
+    zipCode: "",
+    medicalHistory: "",
+    referringDoctor: "",
+    collection: "",
+  },
+  reportData: [],
+};
 
 export const formSlice = createSlice({
-    name: "formData",
-    initialState,
-    reducers: {
-        setPatientData: (state, action) => {
-            state.patientData[action.payload.name] = action.payload.value
-        },
-        addReportData: (state, action) => {
-            // state.reportData.push(action.payload);
-            // const data = action.payload.filter((data) => data);
-            state.reportData = action.payload.filter((data) => data);;
-        }
-    }
+  name: "formData",
+  initialState,
+  reducers: {
+    setPatientData: (state, action) => {
+      state.patientData[action.payload.name] = action.payload.value;
+      // Update patientData with the provided payload
+    },
+    addReportData: (state, action) => {
+      state.reportData = action.payload.filter((data) => data);
+      // No need to update patientData here
+    },
+  },
 });
 
 export const { setPatientData, addReportData } = formSlice.actions;
