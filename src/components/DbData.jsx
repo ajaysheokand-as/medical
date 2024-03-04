@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Medi from "./Medi";
+import Hero from "./Hero";
+import PrintComponent from "./PrintComponent";
+import Report from "./Report";
+import Foot from "./Foot";
 
 function DbData() {
   const [userData, setUserData] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
   const [showMedi, setshowMedi] = useState(false);
 
   const fetchData = async () => {
@@ -15,6 +20,7 @@ function DbData() {
       console.error("Error fetching data:", error);
     }
   };
+
   const toggleMedi = () => {
     setshowMedi(!showMedi);
   };
@@ -22,6 +28,12 @@ function DbData() {
   const handleViewData = () => {
     fetchData();
     console.log("userData", userData); // Log the userData to the console after updating
+  };
+
+  const handleViewReport = (user) => {
+    setSelectedUser(user);
+    toggleMedi();
+     console.log('selectedUser:', user);
   };
 
   return (
@@ -44,7 +56,10 @@ function DbData() {
                   <td>{user.patientinfo.age}</td>
                   <td>{user.patientinfo.gender}</td>
                   <td>
-                    <button className="btn btn-primary" onClick={toggleMedi}>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleViewReport(user)}
+                    >
                       View report
                     </button>
                   </td>
@@ -54,7 +69,14 @@ function DbData() {
             </tbody>
           </table>
         </div>
-        <div>{showMedi && <Medi />}</div>
+        <div>
+          <div className=" d-flex justify-content-center">
+            {showMedi && <PrintComponent user={selectedUser} />}
+          </div>
+          <div>{showMedi && <Hero user={selectedUser} />}</div>
+          <div>{showMedi && <Report user={selectedUser} />}</div>
+          <div>{showMedi && <Foot/>}</div>
+        </div>
       </div>
       <button className="btn btn-primary" onClick={handleViewData}>
         View Data

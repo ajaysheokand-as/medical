@@ -4,9 +4,10 @@ import "../index.css";
 import { useSelector } from "react-redux";
 
 const Report = () => {
-    const reportData = useSelector((state) => state.reportData);
+    // console.log("user=>", user.user.report)
+    const reportData = useSelector((state) => state.reportData) ;
 
-    //   console.log("!!!!! redux reportData=>", reportData);
+      console.log("!!!!! redux reportData=>", reportData);
 
     return (
         ((reportData.length > 0) && <div className="container" style={{ minHeight: '50vh' }}>
