@@ -60,11 +60,13 @@ const Test = () => {
     // };
     const handleSaveResult = async () => {
         const combinedData = { info, testResults };
+        
         console.log("CombinedData", combinedData, testResults);
         try {
             const response = await axios.post(baseUrl, combinedData);
             console.log("Response:", response.data);
             dispatch(addReportData(testResults));
+            
         } catch (error) {
             console.error("Error saving data:", error);
         }

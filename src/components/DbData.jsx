@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Medi from "./Medi";
+import { useDispatch } from "react-redux"; // Corrected import statement
+import { addReportData } from "../redux/formDataSlice";
+// import Medi from "./Medi";
 import Hero from "./Hero";
 import PrintComponent from "./PrintComponent";
 import Report from "./Report";
@@ -10,16 +12,22 @@ function DbData() {
   const [userData, setUserData] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [showMedi, setshowMedi] = useState(false);
+  const dispatch = useDispatch();
 
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3001/users");
       setUserData(response.data);
-      console.log("responseData", response.data); // Log the userData to the console
+      console.log("responseData", response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
+
+  useEffect(() => {
+    // Log userData after updating
+    console.log("userData", userData);
+  }, [userData]);
 
   const toggleMedi = () => {
     setshowMedi(!showMedi);
@@ -27,13 +35,15 @@ function DbData() {
 
   const handleViewData = () => {
     fetchData();
-    console.log("userData", userData); // Log the userData to the console after updating
   };
 
   const handleViewReport = (user) => {
     setSelectedUser(user);
+    dispatch(addReportData(user.reportData));
+    console.log("UserREP:", user.reportData);
+
     toggleMedi();
-     console.log('selectedUser:', user);
+    console.log("selectedUser:", user);
   };
 
   return (
@@ -46,7 +56,6 @@ function DbData() {
                 <th>Patient Name</th>
                 <th>Age</th>
                 <th>Gender</th>
-                {/* Add more columns based on your user schema */}
               </tr>
             </thead>
             <tbody>
@@ -63,7 +72,6 @@ function DbData() {
                       View report
                     </button>
                   </td>
-                  {/* Add more cells based on your user schema */}
                 </tr>
               ))}
             </tbody>
@@ -75,7 +83,7 @@ function DbData() {
           </div>
           <div>{showMedi && <Hero user={selectedUser} />}</div>
           <div>{showMedi && <Report user={selectedUser} />}</div>
-          <div>{showMedi && <Foot/>}</div>
+          <div>{showMedi && <Foot />}</div>
         </div>
       </div>
       <button className="btn btn-primary" onClick={handleViewData}>

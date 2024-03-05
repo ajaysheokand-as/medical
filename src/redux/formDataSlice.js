@@ -27,9 +27,13 @@ export const formSlice = createSlice({
             state.patientData[action.payload.name] = action.payload.value
         },
         addReportData: (state, action) => {
-            // state.reportData.push(action.payload);
-            // const data = action.payload.filter((data) => data);
-            state.reportData = action.payload.filter((data) => data);;
+            console.log("Action payload:", action.payload);
+        
+            if (Array.isArray(action.payload)) {
+                state.reportData = action.payload.filter((data) => data);
+            } else {
+                console.error("Invalid report data format");
+            }
         }
     }
 });
