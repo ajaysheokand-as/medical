@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux"; // Corrected import statement
+import { useDispatch } from "react-redux";
 import { addReportData } from "../redux/formDataSlice";
-// import Medi from "./Medi";
 import Hero from "./Hero";
 import PrintComponent from "./PrintComponent";
 import Report from "./Report";
@@ -24,26 +23,30 @@ function DbData() {
     }
   };
 
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
-    // Log userData after updating
-    console.log("userData", userData);
-  }, [userData]);
+    if (selectedUser && showMedi) {
+      dispatch(addReportData(selectedUser?.report.testResults));
+    }
+    fetchData();
+  }, [selectedUser, showMedi]);
 
   const toggleMedi = () => {
     setshowMedi(!showMedi);
   };
 
-  const handleViewData = () => {
-    fetchData();
-  };
-
   const handleViewReport = (user) => {
     setSelectedUser(user);
-    dispatch(addReportData(user.reportData));
-    console.log("UserREP:", user.reportData);
+    dispatch(addReportData(user?.report.testResults));
 
-    toggleMedi();
-    console.log("selectedUser:", user);
+    // Check if showMedi is currently false, then toggle it to true
+    if (!showMedi) {
+      toggleMedi();
+      console.log("selectedUser:", user);
+    }
   };
 
   return (
@@ -61,9 +64,9 @@ function DbData() {
             <tbody>
               {userData.map((user) => (
                 <tr key={user._id}>
-                  <td>{user.patientinfo.firstName}</td>
-                  <td>{user.patientinfo.age}</td>
-                  <td>{user.patientinfo.gender}</td>
+                  <td>{user?.report?.info?.firstName}</td>
+                  <td>{user?.report?.info?.age}</td>
+                  <td>{user?.report?.info?.gender}</td>
                   <td>
                     <button
                       className="btn btn-primary"
@@ -82,13 +85,10 @@ function DbData() {
             {showMedi && <PrintComponent user={selectedUser} />}
           </div>
           <div>{showMedi && <Hero user={selectedUser} />}</div>
-          <div>{showMedi && <Report user={selectedUser} />}</div>
+          <div>{showMedi && <Report />}</div>
           <div>{showMedi && <Foot />}</div>
         </div>
       </div>
-      <button className="btn btn-primary" onClick={handleViewData}>
-        View Data
-      </button>
     </>
   );
 }

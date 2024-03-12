@@ -23,9 +23,9 @@ function Hero({ user }) {
                             // Content for "/dbdata" path
                             Namedt.map((item, index) => (
                                 <div className='patient_details' key={index}>
-                                    <h1 className='patient_name font-bold text-xl'>{(user?.patientinfo?.firstName || "Name")}</h1>
-                                    <p>Age : {user?.patientinfo?.age}</p>
-                                    <p>Sex : {user?.patientinfo?.gender}</p>
+                                    <h1 className='patient_name font-bold text-xl'>{(user?.report?.info?.firstName || "Name")}</h1>
+                                    <p>Age : {user?.report?.info?.age}</p>
+                                    <p>Sex : {user?.report?.info?.gender}</p>
                                 </div>
                             ))
                         ) : (
