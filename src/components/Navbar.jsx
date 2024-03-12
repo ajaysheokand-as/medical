@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 function Navbar() {
   return (
@@ -25,6 +26,9 @@ function Navbar() {
             </svg>
             <div className="logout ml-4">
               <button className="btn btn-danger">Log out</button>
+              <Link to="/dbdata" className="btn btn-success ml-3">
+                  DbData
+                </Link>
             </div>
           </div>
         </div>

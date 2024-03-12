@@ -163,9 +163,9 @@ const Test = () => {
                 <button className="btn btn-primary" onClick={handleSaveResult}>
                   Save Result
                 </button>
-                <Link to="/dbdata" className="btn btn-primary">
+                {/* <Link to="/dbdata" className="btn btn-primary">
                   DbData
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>

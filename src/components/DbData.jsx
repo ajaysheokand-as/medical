@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import PrintComponent from "./PrintComponent";
 import Report from "./Report";
 import Foot from "./Foot";
+import { Link } from "react-router-dom"; // Import Link
 
 function DbData() {
   const [userData, setUserData] = useState([]);
@@ -88,6 +89,11 @@ function DbData() {
           <div>{showMedi && <Report />}</div>
           <div>{showMedi && <Foot />}</div>
         </div>
+      </div>
+      <div className="back_btn d-flex justify-content-center">
+        <Link to="/" className="btn btn-warning">
+          Back
+        </Link>
       </div>
     </>
   );
