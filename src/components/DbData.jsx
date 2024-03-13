@@ -83,7 +83,7 @@ function DbData() {
         </div>
         <div>
           <div className=" d-flex justify-content-center">
-            {showMedi && <PrintComponent user={selectedUser} />}
+            {showMedi && <PrintComponent />}
           </div>
           <div>{showMedi && <Hero user={selectedUser} />}</div>
           <div>{showMedi && <Report />}</div>
