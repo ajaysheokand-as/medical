@@ -1,6 +1,8 @@
 import React from 'react';
 import html2pdf from 'html2pdf.js';
 import '../App.css';
+import Print from '../assests/print.png'
+import Download from '../assests/download.png'
 
 const PrintComponent = ({ children }) => {
     const printAction = () => {
@@ -9,7 +11,7 @@ const PrintComponent = ({ children }) => {
 
     const createPdfAction = () => {
         const input = document.getElementById('print-component');
-        
+
         html2pdf(input, {
             margin: 10,
             filename: 'your_report.pdf',
@@ -32,8 +34,14 @@ const PrintComponent = ({ children }) => {
         <>
             <thead>
                 <header className='h-32 d-flex justify-content-center align-items-center'>
-                    <button className={" h-10 px-7 me-2 btn btn-primary print-preview-button print-d-none"} onClick={printAction}>Print</button>
-                    <button className={" h-10 px-7 btn btn-success print-preview-button print-d-none"} onClick={createPdfAction}>Create PDF</button>
+                    <button className={"px-7 me-2 print-preview-button print-d-none"}
+                        onClick={printAction}>
+                        <img src={Print} alt='' className=' w-48 h-16' />
+                    </button>
+                    <button className={"px-7 print-preview-button print-d-none"}
+                        onClick={createPdfAction}>
+                        <img src={Download} alt='' className=' w-44 h-14' />
+                    </button>
                 </header>
             </thead>
             <tbody>
