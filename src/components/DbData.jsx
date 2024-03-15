@@ -49,8 +49,6 @@ function DbData({ user }) {
   };
 
   const handleLogout = () => {
-    // Add any additional logout logic here
-    // For example, clearing user data or tokens
     console.log("Logout clicked");
   };
 
