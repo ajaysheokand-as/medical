@@ -8,6 +8,7 @@ function Registration({switchToLoginPage, handleRegister }) {
 
     return (
         <>
+        
             <div className='container-fluid '>
                 <div className="min-h-screen text  flex justify-center items-center bg-gradient-to-br py-4 px-4 sm:px-6 lg:px-8 relative">
                     <video autoPlay loop muted className="fixed top-0 left-0 min-w-full min-h-full z-10">
