@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Profile_icon from "../assests/profile_icon.png";
 import axios from "axios";
-import Med_icon from '../assests/medical_logo.png';
+import Med_icon from "../assests/medical_logo.png";
 
 function Navbar({ handleLogout }) {
   const [userData, setUserData] = useState(null);
@@ -69,8 +69,12 @@ function Navbar({ handleLogout }) {
             <div className="dropdown absolute right-0 mt-3 bg-white border border-gray-300 rounded-md shadow-lg z-10">
               <div className="p-2">
                 <h3 className="text-lg font-semibold mb-2">User Details</h3>
-                <p className="mb-1"><strong>Username:</strong> {userData.username}</p>
-                <p className="mb-1"><strong>Email:</strong> {userData.email}</p>
+                <p className="mb-1">
+                  <strong>Username:</strong> {userData.username}
+                </p>
+                <p className="mb-1">
+                  <strong>Email:</strong> {userData.email}
+                </p>
                 {/* Add more user details as needed */}
               </div>
             </div>
@@ -86,7 +90,7 @@ function Navbar({ handleLogout }) {
             className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 ml-4 rounded-full shadow-md transition duration-300 ease-in-out"
           >
             Log Out
-          </button> 
+          </button>
         </div>
       </div>
     </nav>
