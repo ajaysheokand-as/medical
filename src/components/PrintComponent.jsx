@@ -59,3 +59,4 @@ const PrintComponent = ({ children }) => {
 };
 
 export default PrintComponent;
+
