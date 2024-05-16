@@ -4,14 +4,15 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 function Hero({ user }) {
-    
+
+    const isDbDataPath = window.location.pathname.includes("/dbData");
+
+    console.log("this is user=>", user, user?.report?.info?.firstName, isDbDataPath)
     const patientData = useSelector(state => state.patientData);
     const parsedDate = new Date();
-    const location = useLocation();
 
-    const isDbDataPath = location.pathname === "/dbdata";
 
-    // Format the date
+
     const formattedDate = `${parsedDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })} ${parsedDate.getDate()} ${parsedDate.toLocaleString('en-US', { month: 'short' })}, ${parsedDate.getFullYear()}`;
 
     return (
@@ -20,23 +21,20 @@ function Hero({ user }) {
                 <div className='row hero_section flex justify-around'>
                     <div className='col-sm-3 patient text-base'>
                         {isDbDataPath ? (
-                            // Content for "/dbdata" path
-                            Namedt.map((item, index) => (
-                                <div className='patient_details' key={index}>
-                                    <h1 className='patient_name font-bold text-xl'>{(user?.patientinfo?.firstName || "Name")}</h1>
-                                    <p>Age : {user?.patientinfo?.age}</p>
-                                    <p>Sex : {user?.patientinfo?.gender}</p>
-                                </div>
-                            ))
+
+                            <div className='patient_details'>
+                                <h1 className='patient_name font-bold text-xl'>{(user?.report?.info?.firstName || "Name")}</h1>
+                                <p>Patient Id : {user?.report?.info?.patientId}</p>
+                                <p>Age : {user?.report?.info?.age}</p>
+                                <p>Sex : {user?.report?.info?.gender}</p>
+                            </div>
                         ) : (
-                            // Content for other paths
-                            Namedt.map((item, index) => (
-                                <div className='patient_details' key={index}>
-                                    <h1 className='patient_name font-bold text-xl'>{(patientData?.firstName || "Name")}</h1>
-                                    <p>Age : {patientData?.age}</p>
-                                    <p>Sex : {patientData?.gender}</p>
-                                </div>
-                            ))
+                            <div className='patient_details' >
+                                <h1 className='patient_name font-bold text-xl'>{(patientData?.firstName || "Name")}</h1>
+                                <p>Patient ID : {patientData?.patientId}</p>
+                                <p>Age : {patientData?.age}</p>
+                                <p>Sex : {patientData?.gender}</p>
+                            </div>
                         )}
                     </div>
                     {Namedt.map((item, index) => (
