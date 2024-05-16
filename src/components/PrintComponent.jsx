@@ -6,7 +6,7 @@ import DownloadIcon from './Img/download.png';
 
 const PrintComponent = ({ children }) => {
    const printAction = () => {
-      window.print(children);
+      window.print();
    };
 
    const createPdfAction = () => {
@@ -59,3 +59,4 @@ const PrintComponent = ({ children }) => {
 };
 
 export default PrintComponent;
+

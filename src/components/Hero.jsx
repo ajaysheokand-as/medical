@@ -11,8 +11,6 @@ function Hero({ user }) {
     const patientData = useSelector(state => state.patientData);
     const parsedDate = new Date();
 
-
-
     const formattedDate = `${parsedDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })} ${parsedDate.getDate()} ${parsedDate.toLocaleString('en-US', { month: 'short' })}, ${parsedDate.getFullYear()}`;
 
     return (

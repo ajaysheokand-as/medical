@@ -5,6 +5,7 @@ import Test from "./Test";
 import Navbar from "./Navbar";
 import PatientRecord from "./PatientRecord";
 
+
 function Home({ handleLogout }) {
   return (
     <>
